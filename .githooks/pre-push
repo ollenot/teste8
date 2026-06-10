@@ -1,0 +1,34 @@
+#!/bin/sh
+# =============================================================
+# AI Code Review - pre-push hook
+# Installed by: https://github.com/your-org/CodeReview
+#
+# Runs an AI review of the diff being pushed before it reaches
+# the remote. Use 'git push --no-verify' to skip.
+# =============================================================
+
+# Path to the CodeReview tool is embedded by install.js
+AI_REVIEW_SCRIPT="C:/Users/p017419/source/Testes/.ai-review/src/code-review.js"
+
+# Check Node.js is available
+if ! command -v node > /dev/null 2>&1; then
+  echo "[AI Code Review] WARNING: Node.js not found, skipping review."
+  exit 0
+fi
+
+# Check the review script exists
+if [ ! -f "$AI_REVIEW_SCRIPT" ]; then
+  echo "[AI Code Review] WARNING: Review script not found at:"
+  echo "  $AI_REVIEW_SCRIPT"
+  echo "[AI Code Review] Run 'node install.js' in the CodeReview repo to reinstall."
+  exit 0
+fi
+
+echo ""
+echo "============================================================"
+echo " AI Code Review - Analyzing your changes..."
+echo "============================================================"
+
+# Pass stdin (push refs) and all args to the Node.js script
+node "$AI_REVIEW_SCRIPT" "$@"
+exit $?

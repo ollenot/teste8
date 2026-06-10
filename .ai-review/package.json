@@ -1,0 +1,9 @@
+{
+  "name": "ai-code-review",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "openai": "^4.67.0",
+    "dotenv": "^16.4.5"
+  }
+}

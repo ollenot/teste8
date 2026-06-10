@@ -1,0 +1,6 @@
+
+# AI Code Review secrets
+.env
+
+# AI Code Review dependencies (installed locally)
+.ai-review/node_modules/
