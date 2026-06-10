@@ -7,4 +7,4 @@ function validarSenha(senha) {
         console.log("Acesso negado");
     }
 }
-validarSenha("123456");
+validarSenha("1234567");
